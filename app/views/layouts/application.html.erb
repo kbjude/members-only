@@ -17,21 +17,21 @@
       <p> <%= alert %> </p>
   <% end %>
 
-  <% if user_signed_in?%>
-  <p class = "content">
-      <%= link_to current_user.name%>
-  </p>
-  <p>
-      <%= link_to "logout", destroy_user_session_path, method: :delete, class: "button is-info"%>
-  </p>
-<% else %>
-    <p >
-      <%= link_to "Sign In", new_user_session_path, class: "button is-info"%>
+  <% if user_signed_in? %>
+    <p class = "content">
+        <%= link_to current_user.name, edit_user_registration_path %>
     </p>
-    <p >
-    <%= link_to "Sign Up", new_user_registration_path, class: "button is-info"%>
-  </p>
-<% end %>
+    <p>
+        <%= link_to "logout", destroy_user_session_path, method: :delete, class: "button"%>
+    </p>
+  <% else %>
+      <p >
+        <%= link_to "Sign In", new_user_session_path, class: "button" %>
+      </p>
+      <p >
+      <%= link_to "Sign Up", new_user_registration_path, class: "button"%>
+      </p>
+  <% end %>
 
     <%= yield %>
 
