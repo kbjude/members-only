@@ -2,14 +2,20 @@
 
 <%= link_to 'New post', new_post_path %>
 
-<% if user_signed_in? %>
-    <ul>
-        <% @posts.each do |post|%>
+
+<ul>
+    <% @posts.each do |post|%>
+        <% if user_signed_in? %>
             <li>
                 <p> <h1> <%= post.title %> </h1> <p>
                 <%= link_to post.body %> <br>
-               <p> Author: <%= post.user.name %> </p>
+            <p> Author: <%= post.user.name %> </p>
             </li>
+        <% else %>
+        <li>
+            <p> <h1> <%= post.title %> </h1> <p>
+            <%= link_to post.body %> <br>
+        </li>
         <% end %>
-    </ul>
-<% end %>
+    <% end %>
+</ul>

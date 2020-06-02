@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-    #before_action :set_post!, only: %i[new create]
     before_action :authenticate_user!, except: [:index]
+    before_action :set_post, only: %i[new create]
     def index
         @posts = Post.all.order("created_at DESC")
     end
@@ -17,6 +17,10 @@ class PostsController < ApplicationController
     end
 
     private
+
+    def set_post
+        @post = Post.new
+    end
 
     def post_params
         params.require(:post).permit(:title, :body)
