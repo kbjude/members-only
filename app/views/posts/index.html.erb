@@ -1,12 +1,14 @@
 <h1> Posts </h1>
 
+<%= link_to 'New post', new_post_path %>
+
 <% if user_signed_in? %>
     <ul>
         <% @posts.each do |post|%>
             <li>
                 <p> <h1> <%= post.title %> </h1> <p>
                 <%= link_to post.body %> <br>
-                <%= post.user.name %>
+               <p> Author: <%= post.user.name %> </p>
             </li>
         <% end %>
     </ul>
