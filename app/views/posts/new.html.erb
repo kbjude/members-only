@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+    <%= form_for @post do |post|%>
+        <%= post.label :title  %>  <br> <br>
+        <%= post.text_field :title  %>  <br> <br><br>
+        <%= post.label :body  %> <br> <br>
+        <%= post.text_area :body  %> <br> <br>
+        <%= post.submit %>
+    <% end %>
+<% end%>
